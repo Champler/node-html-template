@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .signature-container {
+        display: table;
+        width: 90%;
+        margin: auto;
+        table-layout: fixed;
+      }
+      .signature-space {
+        display: table-cell;
+        border-top: 1px solid black;
+        text-align: center;
+      }
+      td {
+        border-right: 1px solid black ;
+      }
+    </style>
+</head>
+<body>
+  <table style="border: 1px solid black; width: 90%; margin: auto; border-collapse: collapse; page-break-inside: avoid;">
+    <tr style="border: 1px solid black;">
+      <td style="width: 15%; text-align: center;">
+        <img src="your-image-source.jpg" alt="image" style="width: 100%; max-width: 100px;">
+      </td>
+      <td style="width: 30%; vertical-align: top;">
+        <p style="margin: 5px 0;">ORIGINAL</p>
+        <p style="margin: 5px 0;">DUPLICADO</p>
+      </td>
+      <td style="width: 40%;">
+        {{data.tipo_documento}} N* {{data.nro_documento}}
+      </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td style="width: 50%; vertical-align: top;">
+        <p style="margin: 5px 0;">Número de P3: {{data.nrop3}}</p>
+        <p style="margin: 5px 0;">Obra: {{data.nombre}}</p>
+        <p style="margin: 5px 0;">Partido: {{data.partido}}</p>
+        <p style="margin: 5px 0;">Sistema/Cuenca: {{data.sistema}}</p>
+      </td>
+      <td style="width: 25%; vertical-align: top; padding-left: 20px; border: none">
+        <p style="margin: 5px 0;">Fecha: {{data.fecha}}</p>
+        <p style="margin: 5px 0;">Contratista: {{data.contratista}}</p>
+      </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td colspan="3" style="padding: 10px;">
+        Referencia: {{data.referencia}}
+      </td>
+    </tr>
+  </table>
+  <table style="border-collapse: collapse; width: 90%; margin: auto;  margin-top: 100px; margin-bottom: 500px;">
+    <tr style="border: 1px solid black;">
+      <td >Asunto</td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td >{{data.asunto}}</td>
+    </tr>
+    <tr style="border: 1px solid black;">
+      <td >Descripción</td>
+    </tr>
+    <tr style="border: 1px solid black; height: 200px; vertical-align: baseline;">
+      <td >{{data.descripcion}}</td>
+    </tr>
+  </table>
+  
+  <div class="signature-container">
+    <div class="signature-space">
+      <p>Firma Autorizada y Aclaración</p>
+      <p>Inspección de Obra</p>
+    </div>
+    <div class="signature-space">
+      <p>Firma y Aclaración</p>
+      <p>Contratista</p>
+    </div>
+  </div>
+
+  <div style="margin: auto; width: 90%;" >
+    <p style="font-weight: bold;"> Requiere Respuesta:  {{data.requiere_respuesta}}</p>
+    <p style="font-weight: bold;"> Fecha de Recepción:{{data.fecha_recepcion}} </p>
+  </div>
+</body>
+</html>

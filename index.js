@@ -2,20 +2,20 @@ const express = require('express');
 const path = require('path');
 var fs = require('fs');
 var pdf = require('dynamic-html-pdf');
-var html = fs.readFileSync(path.join(__dirname, '/views/index.html'), 'utf8');
+var html = fs.readFileSync('index.html', 'utf-8');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     const options = {
         format: "A4",
         orientation: "portrait",
     };
     
-    let json = {
+    let data = {
         original: "X",
         duplicado: "",
         tipo_documento: "Orden de servicio",
@@ -35,13 +35,14 @@ app.post('/', (req, res) => {
     let document = {
         type: 'file',    
         template: html,
-        context: json,
+        context: {data},
         path: "./output.pdf"    
     }
     
     pdf.create(document, options)
-        .then(res => {
-            console.log(res)
+        .then(data => {
+            console.log(data)
+            res.send("ok")
         })
         .catch(error => {
             console.error(error)
